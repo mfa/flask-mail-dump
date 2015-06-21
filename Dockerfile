@@ -26,5 +26,6 @@ RUN chown -R uid1000: /opt
 RUN chmod 1000 /opt/code/flaskdump/start.sh
 WORKDIR flaskdump
 
-EXPOSE 5001
+EXPOSE 5000
+USER root
 CMD ["./start.sh"]
