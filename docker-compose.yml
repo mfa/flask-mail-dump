@@ -1,0 +1,9 @@
+web:
+  build: .
+  command: "python3 main.py"
+  environment:
+    PYTHONUNBUFFERED: 0
+  volumes:
+   - .:/opt/code
+  ports:
+   - "5001:5000"
