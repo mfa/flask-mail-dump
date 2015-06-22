@@ -23,7 +23,7 @@ RUN pip3 install -Ur requirements.txt
 ADD . /opt/code
 
 RUN chown -R uid1000: /opt
-RUN chmod 1000 /opt/code/flaskdump/start.sh
+RUN chmod 500 /opt/code/flaskdump/start.sh
 WORKDIR flaskdump
 
 EXPOSE 5000
