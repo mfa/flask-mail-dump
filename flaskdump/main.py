@@ -30,7 +30,7 @@ def email_in():
 
     body_plain = request.form.get('body-plain', '')
 
-    fn = hashlib.sha1(datetime.datetime.now().isoformat()).hexdigest()
+    fn = hashlib.sha1(datetime.datetime.now().isoformat().encode('utf-8')).hexdigest()
     fn = request.form.get('signature', fn)
     if sender and recipient:
         dirname = os.path.join(os.path.dirname(__file__), 'mail_default')
