@@ -2,7 +2,7 @@
 #!/usr/bin/env python
 
 # Flask
-from flask import Flask, request
+from flask import Flask, request, abort
 app = Flask(__name__)
 
 import os
@@ -23,7 +23,7 @@ def index():
 @app.route('/email/', methods=['POST'])
 def email_in():
     if not request.args.get('key', '') == KEY:
-        return "you failed this city."
+        abort(403)
 
     sender = request.form.get('sender')
     recipient = request.form.get('recipient')
