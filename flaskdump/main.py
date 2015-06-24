@@ -12,7 +12,7 @@ import codecs
 import datetime
 import hashlib
 
-from config import KEY, EMAIL
+from config import KEY, EMAIL, BASEDIR
 
 
 @app.route('/')
@@ -33,13 +33,13 @@ def email_in():
     fn = hashlib.sha1(datetime.datetime.now().isoformat().encode('utf-8')).hexdigest()
     fn = request.form.get('signature', fn)
     if sender and recipient:
-        dirname = os.path.join(os.path.dirname(__file__), 'mail_default')
+        dirname = os.path.join(BASEDIR, 'mail_default')
         if EMAIL in recipient:
-            dirname = os.path.join(os.path.dirname(__file__), 'mail_filtered')
+            dirname = os.path.join(BASEDIR, 'mail_filtered')
         with codecs.open(os.path.join(dirname, fn + '.mail'),
                          'w', encoding="utf-8") as fp:
             fp.write(body_plain)
-    dirname = os.path.join(os.path.dirname(__file__), 'logs')
+    dirname = os.path.join(BASEDIR, 'logs')
     with codecs.open(os.path.join(dirname, fn + '.log'),
                      'w', encoding="utf-8") as fp:
         fp.write(json.dumps(request.form))

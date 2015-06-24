@@ -1,3 +1,4 @@
 
 EMAIL = "foo@example.com"
 KEY = "GET-PARAMETER-KEY-HERE"
+BASEDIR = "/opt/code/flaskdump"
