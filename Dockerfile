@@ -27,5 +27,4 @@ RUN chmod 500 /opt/code/flaskdump/start.sh
 WORKDIR flaskdump
 
 EXPOSE 5000
-USER root
 CMD ["./start.sh"]
